@@ -489,6 +489,8 @@ Phaser.Text.prototype.addColor = function (color, position) {
 * @return {array} An array of strings with the pieces of wrapped text.
 */
 Phaser.Text.prototype.precalculateWordWrap = function (text) {
+    this.texture.baseTexture.resolution = this._res;
+    this.context.font = this.style.font;
     var wrappedLines = this.runWordWrap(text);
     return wrappedLines.split(/(?:\r\n|\r|\n)/);
 };
