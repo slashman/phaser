@@ -480,6 +480,20 @@ Phaser.Text.prototype.addColor = function (color, position) {
 };
 
 /**
+* Precalculates word wrap for a given text based on the Text object configuration.
+*
+* It may be useful is the developer wants to control pagination on long pieces of content.
+*
+* @method Phaser.Text#precalculateWordWrap
+* @param {string} text - The text for which the wrapping will be precalculated.
+* @return {array} An array of strings with the pieces of wrapped text.
+*/
+Phaser.Text.prototype.precalculateWordWrap = function (text) {
+    var wrappedLines = this.runWordWrap(text);
+    return wrappedLines.split(/(?:\r\n|\r|\n)/);
+};
+
+/**
 * Greedy wrapping algorithm that will wrap words as the line grows longer than its horizontal bounds.
 *
 * @method Phaser.Text#runWordWrap
